@@ -1,0 +1,382 @@
+﻿ul.resp-tabs-list, p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.resp-tabs-list li {
+    font-weight: 600;
+    font-size: 13px;
+    display: inline-block;
+    padding: 13px 15px;
+    margin: 0;
+    list-style: none;
+    cursor: pointer;
+    float: left;
+}
+
+.resp-tabs-container {
+    padding: 0px;
+    background-color: #fff;
+    clear: left;
+}
+
+h2.resp-accordion {
+    cursor: pointer;
+    padding: 5px;
+    display: none;
+}
+
+.resp-tab-content {
+    display: none;
+    padding: 15px;
+}
+
+.resp-tab-active {
+    border: 1px solid #c1c1c1;
+    border-bottom: none;
+    margin-bottom: -1px !important;
+    padding: 12px 14px 14px 14px !important;
+}
+
+.resp-tab-active {
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.resp-content-active, .resp-accordion-active {
+    display: block;
+}
+
+.resp-tab-content {
+    border: 1px solid #c1c1c1;
+}
+
+h2.resp-accordion {
+    font-size: 13px;
+    border: 1px solid #c1c1c1;
+    border-top: 0px solid #c1c1c1;
+    margin: 0px;
+    padding: 10px 15px;
+}
+
+h2.resp-tab-active {
+    border-bottom: 0px solid #c1c1c1 !important;
+    margin-bottom: 0px !important;
+    padding: 10px 15px !important;
+}
+
+h2.resp-tab-title:last-child {
+    border-bottom: 12px solid #c1c1c1 !important;
+    background: blue;
+}
+/*-----------Vertical tabs-----------*/
+.resp-vtabs ul.resp-tabs-list {
+    float: left;
+	margin-top: 7px;
+    width: 25%;
+}
+
+.resp-vtabs .resp-tabs-list li {
+    padding: 10px 0 10px 10px;
+    margin: 0;
+    cursor: pointer;
+    float: none;
+}
+
+.resp-vtabs .resp-tabs-container {
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #c1c1c1;
+    float: left;
+    width: 73%;
+    min-height: 350px;
+    border-radius: 4px;
+    clear: none;
+}
+
+.resp-vtabs .resp-tab-content {
+    border: none;
+}
+
+.resp-tab-item > span {
+    clear: both;
+    float: left;
+    font-size: 70%;
+    width: 100%;
+}
+.resp-vtabs li.resp-tab-active {
+	color: #D13636;
+    border-color: #C1C1C1 #FFFFFF #C1C1C1 #F44343;
+    border-image: none;
+    border-style: solid solid solid solid;
+    border-width: 1px 1px 1px 3px;
+    background-color: #fff;
+	min-width: 146px;
+    z-index: 1;
+    margin-right: -1px !important;
+    padding: 14px 15px 15px 14px !important;
+}
+
+.resp-arrow {
+    width: 0;
+    height: 0;
+    float: right;
+    margin-top: 3px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 12px solid #c1c1c1;
+}
+
+h2.resp-tab-active span.resp-arrow {
+    border: none;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #9B9797;
+}
+
+/*-----------Accordion styles-----------*/
+h2.resp-tab-active {
+    background: #DBDBDB !important;
+}
+.resp-easy-accordion  h2.resp-accordion {
+        display: block;
+}
+.resp-easy-accordion .resp-tab-content {
+    border: 1px solid #c1c1c1;
+}
+
+.resp-easy-accordion .resp-tab-content:last-child {
+    border-bottom: 1px solid #c1c1c1 !important;
+}
+
+.resp-jfit {
+    width: 100%;
+    margin: 0px;
+}
+
+.resp-tab-content-active {
+    display: block;
+}
+
+h2.resp-accordion:first-child {
+    border-top: 1px solid #c1c1c1 !important;
+}
+
+/*Here your can change the breakpoint to set the accordion, when screen resolution changed*/
+@media only screen and (max-width: 768px) {
+    ul.resp-tabs-list {
+        display: none;
+    }
+
+    h2.resp-accordion {
+        display: block;
+    }
+
+    .resp-vtabs .resp-tab-content {
+        border: 1px solid #C1C1C1;
+    }
+
+    .resp-vtabs .resp-tabs-container {
+        border: none;
+        float: none;
+        width: 100%;
+        min-height: initial;
+        clear: none;
+    }
+    .resp-accordion-closed {
+        display:none !important;
+    }
+    .resp-vtabs .resp-tab-content:last-child {
+        border-bottom: 1px solid #c1c1c1 !important;
+    }
+}
+
+
+
+
+hr {
+    clear: both;
+    margin: 5px 0;
+}
+.wm-yellow {
+	background-color: #F3AF32;
+    border: 1px solid #E8C65C;
+}
+.wm-blue {
+	background-color: #39B6D6;
+    border: 1px solid #2D89A1;
+}
+.wm-green {
+	background-color: #35CFD0;
+    border: 1px solid #1F7C7C;
+}
+.wm-black {
+	background-color: #464F5E;
+    border: 1px solid #313842;
+}
+
+.wm-half {
+    float: left;
+    margin-right: 1%;
+    width: 49%;
+}
+.wm-widget  {
+    float: left;
+	box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5) inset,1px -1px 0 rgba(255, 255, 255, 0.2) inset;
+	font: 14px Helvetica,Arial,Sens-serif;
+	margin-bottom: 5px;
+    margin-right: 5px;
+    width: 100%;
+}
+.wm-widget-content {
+    float: left;
+    width: 50%;
+}
+.wm-widget-content:first-child {
+	margin: -1px;
+	border-right: 1px solid #EEEEEE;
+}
+.wm-widget-content > span {
+    color: #FFFFFF;
+    float: left;
+    font-family: roboto;
+    font-size: 60px;
+    line-height: 47px;
+    margin-bottom: 18px;
+    margin-top: 30px;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+.wm-widget-content > p {
+    color: #FFFFFF;
+    float: left;
+    font-family: pt sans;
+    font-size: 20px;
+    letter-spacing: 0.35px;
+    line-height: 10px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+.wm-widget-content-sub {
+    color: #FFFFFF;
+    float: left;
+    font-size: 16px;
+    height: 64px;
+    text-align: center;
+    width: 100%;
+}
+.wm-widget-content-sub:first-child {
+    border-bottom: 1px solid #FFFFFF;
+}
+.wm-widget-content-sub > span {
+    font-size: 35px;
+}
+
+
+
+
+
+
+
+
+
+.wm-info-section {
+    width: 60%;
+}
+.wm-info-section-full {
+    width: 100%;
+}
+.wm-info-section-full h1, .wm-info-section-full h2{
+	background-color: rgba(0, 0, 0, 0);
+	border: medium none;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 16px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0.5em 0 10px;
+    padding: 14px 15px 5px 0;
+    position: relative;
+}
+.wm-info-section-full h2{
+	font-size: 14px;
+}
+.wm-info-header{
+	display: inline-block;
+    margin: 8px 30px 2px 0;
+    width: 100%;
+}
+.wm-info-count {
+    display: inline-block;
+    float: right;
+}
+.wm-safe-text {
+	color:#9AFF60 ;
+    display: inline-block;
+    float: right;
+}
+.wm-unsafe-text {
+	color:#D33823 ;
+    display: inline-block;
+    float: right;
+}
+.wm-warning-text {
+    color: #FFC933;
+	display: inline-block;
+    float: right;
+}
+.wm-info-bar {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border-radius: 5px;
+    display: block;
+    height: 4px;
+    margin: 5px 0 0;
+}
+.wm-info-percent {
+    background: none repeat scroll 0 0 #3BA633;
+	border-radius: 5px;
+    display: block;
+    height: 4px;
+}
+.wm-info-bar-big {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border-radius: 5px;
+    display: inline-block;
+    height: 25px;
+    margin: 5px 0 0;
+    text-align: center;
+    width: 100%;
+}
+.wm-info-percent-big {
+    background: none repeat scroll 0 0 #3BA633;
+    border-radius: 5px;
+    display: inline-block;
+    float: left;
+    height: 25px;
+}
+.wm-info-detail {
+    clear: both;
+    display: inline-block;
+    float: left;
+    margin-bottom: 2px;
+    width: 100%;
+}
+.wm-info-content {
+    clear: both;
+    display: block;
+    margin-left: 10px;
+}
+.wm-info-line {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border-radius: 5px;
+    display: block;
+    height: 1px;
+    margin: 5px 0 0;
+}
+
+.qa-form-tall-button-updateseo {
+    float: right;
+    margin: 0 0 15px;
+}
