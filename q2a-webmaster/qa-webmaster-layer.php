@@ -21,8 +21,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		if ( ($qa_request == 'webmaster') && (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN) )
 				$this->output('<script type="text/javascript" src="'. qa_opt('site_url') . $this->plugin_url .'include/easyResponsiveTabs.js"></script>');  
 	}	
-	function body_footer()
-	{
+	function body_footer(){
 		global $qa_request;
 		if ( ($qa_request == 'webmaster') && (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN) )
 			$this->output(
@@ -40,20 +39,23 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		// Setup Navigation
 		global $qa_request;
 		if (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN){
-			$this->content['navigation']['main']['webmaster'] = array(
-				'label' => 'WebMaster',
-				'url' => qa_path_html('webmaster'),
-				'opposite' => true,
-				'selected' => true,
-			);
-			if($qa_request == 'webmaster') {
-					$this->template="q2a_webmaster";
+			if (qa_opt('wm_link_nav')) {
+				$this->content['navigation']['main']['webmaster'] = array(
+					'label' => 'WebMaster',
+					'url' => qa_path_html('webmaster'),
+					'opposite' => true,
+				);
+				if($qa_request == 'webmaster') {
 					$this->content['navigation']['main']['webmaster']['selected'] = true;
 					$this->content['navigation']['main']['selected'] = true;
-					$this->content['site_title']="by QA-Themes.com";
+				}
+			}
+			if($qa_request == 'webmaster') {
+					$this->template="q2a_webmaster";
+					$this->content['site_title']="Reports";
 					$this->content['error']="";
 					$this->content['suggest_next']="";
-					$this->content['title']="Q2A WebMaster";
+					$this->content['title']="Question2Answer Webmaster";
 			}
 			if($qa_request == 'webmaster') {
 				require_once QA_INCLUDE_DIR.'qa-db-recalc.php';
@@ -83,7 +85,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 							' . $this->getServerSecurity() . '
 						</div>
 						<div>
-							' . $content= $this->getVersion() . $this->getAbout() . '
+							' . $this->getVersion() . $this->getAbout() . '
 						</div>
 					</div>
 				</div>
@@ -160,17 +162,23 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	
 	function getServerInfo(){
 		if (!function_exists('memory_get_usage')){
-			$memory_usage='unknown';
-			$real_memory_usage = 'unknown';
+			$memory_usage=$this->memory_get_usage();
+			$real_memory_usage = $memory_usage;
+			$f_memory_usage = $this->formatBytes($memory_usage);
+			$f_real_memory_usage = 'unknown';
 		}else{
 			$memory_usage = memory_get_usage();
-			$real_memory_usage =memory_get_usage(true);
+			$real_memory_usage = memory_get_usage(true);
+			$f_memory_usage = $this->formatBytes($memory_usage);
+			$f_real_memory_usage = $this->formatBytes($real_memory_usage);
 		}
 		if (!function_exists('memory_get_peak_usage')){
-			$peak_memory_usage='unknown';
+			$peak_memory_usage = 0;
+			$f_peak_memory_usage='unknown';
 			//$real_peak_memory_usage = 'unknown';
 		}else{
 			$peak_memory_usage = memory_get_peak_usage();
+			$f_peak_memory_usage = $this->formatBytes($peak_memory_usage);
 			//$real_peak_memory_usage = memory_get_peak_usage(true);
 		}
 		$server = &$_SERVER;
@@ -180,15 +188,15 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		<div class="wm-info-section-full">
 			<span class="wm-info-header">
 				<strong>Memory Usage Sampling</strong>
-				<span class="wm-info-count">' . $this->formatBytes($memory_usage) . '</span>
+				<span class="wm-info-count">' . $f_memory_usage . '</span>
 			</span>
 			<span class="wm-info-header">
 				<strong>Real Memory Usage</strong>
-				<span class="wm-info-count">' . $this->formatBytes($real_memory_usage) . '</span>
+				<span class="wm-info-count">' . $f_real_memory_usage . '</span>
 			</span>
 			<span class="wm-info-header">
 				<strong>Peak Usage</strong>
-				<span class="wm-info-count">' . $this->formatBytes($peak_memory_usage) . '</span>
+				<span class="wm-info-count">' . $f_peak_memory_usage . '</span>
 			</span>
 			<span class="wm-info-header">
 				<strong>PHP Memory Limit</strong>
@@ -268,7 +276,23 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		}else{
 			$report=json_decode( qa_opt('seo_report') ,true);
 		}
-		$content='
+		$content='';
+		if (empty($report)){
+			$content='
+			<div class="wm-info-section-full">
+				<span class="wm-info-header">
+					<strong>You had never updated your SEO Status</strong>
+					<span class="wm-info-count">
+						<form name="webmaster_form" action="'.qa_self_html().'#verticalTab2" method="post">
+							<input id="updateseo" NAME="updateseo" class="qa-form-tall-button qa-form-tall-button-updateseo" type="submit" title="" value="Update Stats Now!">
+						</form>
+					</span>
+				</span>
+				<hr>
+			</div>
+			';
+		}
+		$content.='
 		<div class="wm-info-section">
 			<span class="wm-info-header">
 				Google Page Rank
@@ -336,9 +360,12 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		
 		$words= qa_db_count_words();
 		
-		$users = QA_FINAL_EXTERNAL_USERS ? '<span>number of users is not extracted for external integrations</span>' : ('<span>'.qa_db_count_users().'</span><p>Users</p>');
+		$user_count=qa_db_count_users();
+		$users = QA_FINAL_EXTERNAL_USERS ? '<span>number of users is not extracted for external integrations</span>' : ('<span>'.$user_count.'</span><p>Users</p>');
 		$users_with_points = (int)qa_opt('cache_userpointscount'); // users with points
 		$users_with_posts = qa_db_count_active_users('posts'); // users with posts
+		$inactive_users = (int)$user_count - $users_with_points;
+		
 		//$users_with_votes = qa_db_count_active_users('uservotes'); // users with votes
 		$content='
 			<div class="wm-half">
@@ -402,8 +429,8 @@ class qa_html_theme_layer extends qa_html_theme_base {
 					</div>
 					<div class="wm-widget-content">
 						<div class="wm-widget-content-sub">
-							<span>' . $users_with_points . '</span>
-							<p>Earned Points</p>				
+							<span>' . $inactive_users . '</span>
+							<p>Inactive</p>				
 						</div>
 						<div class="wm-widget-content-sub">
 							<span>' . $users_with_posts . '</span>
@@ -442,6 +469,33 @@ class qa_html_theme_layer extends qa_html_theme_base {
 
 		return $val;
 	}
+	function memory_get_usage()
+    {
+        //If its Windows
+        //Tested on Win XP Pro SP2. Should work on Win 2003 Server too
+        //Doesn't work for 2000
+        //If you need it to work for 2000 look at http://us2.php.net/manual/en/function.memory-get-usage.php#54642
+        if ( substr(PHP_OS,0,3) == 'WIN')
+        {
+               if ( substr( PHP_OS, 0, 3 ) == 'WIN' )
+                {
+                    $output = array();
+                    exec( 'tasklist /FI "PID eq ' . getmypid() . '" /FO LIST', $output );
+       
+                    return preg_replace( '/[\D]/', '', $output[5] ) * 1024;
+                }
+        }else
+        {
+            //We now assume the OS is UNIX
+            //Tested on Mac OS X 10.4.6 and Linux Red Hat Enterprise 4
+            //This should work on most UNIX systems
+            $pid = getmypid();
+            exec("ps -eo%mem,rss,pid | grep $pid", $output);
+            $output = explode("  ", $output[0]);
+            //rss is given in 1024 byte units
+            return $output[1] * 1024;
+        }
+    } 
 }
 
 
