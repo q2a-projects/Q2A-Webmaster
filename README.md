@@ -34,15 +34,16 @@ This plugin gives you a report of your Question2Answer site's SEO status and ran
 * Shows link to a guide to fix each problem.
 
 ## Installation
-Normal plugin installation
+
 1. Download the plugin.
 2. Extract `q2a-webmaster` directory..
 3. upload it to your Q2A site's `qa-plugins/` directory.
 
-to use the plugin log in as Administrator and visit `q2a-site.com/webmaster`. also 'Webmaster' link will be added at the end of your main navigation(link is only visible to Administrator Users). also Reports will be hidden from users and only administrators can access them.
+to use the plugin log in as Administrator and visit `q2a-site.com/webmaster`.
+'Webmaster' link will be added at the end of your main navigation. Navigation item will only be visible to administrators and only they can access webmaster's page.
+Navigation menu can be deactivated/ or directly accessed in plugin options.
 
 to update SEO Stats visit it's tab and click **Update Stats**
-
 
 ## Author
 **Q2A Webmaster Plugin** plugin is developed by [Towhid Nategheian](http://TowhidN.com) and supported by [QA-Themes.com](http://QA-Themes.com).
