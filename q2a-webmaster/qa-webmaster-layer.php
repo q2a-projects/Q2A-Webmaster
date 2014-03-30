@@ -47,7 +47,6 @@ class qa_html_theme_layer extends qa_html_theme_base {
 				);
 				if($qa_request == 'webmaster') {
 					$this->content['navigation']['main']['webmaster']['selected'] = true;
-					$this->content['navigation']['main']['selected'] = true;
 				}
 			}
 			if($qa_request == 'webmaster') {
