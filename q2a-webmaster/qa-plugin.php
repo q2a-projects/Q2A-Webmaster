@@ -5,7 +5,7 @@
     Plugin URI: https://github.com/Towhidn/Q2A-Webmaster
     Plugin Update Check URI:  https://github.com/Towhidn/Q2A-Webmaster/raw/master/q2a-webmaster/qa-plugin.php
     Plugin Description: Webmaster Reports for Q2A Admin
-    Plugin Version: 1.1
+    Plugin Version: 1.2
     Plugin Date: 2014-20-1
     Plugin Author: QA-Themes.com
     Plugin Author URI: http://QA-Themes.com

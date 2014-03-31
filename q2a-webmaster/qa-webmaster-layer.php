@@ -450,7 +450,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 		if ($bytes == 0) return 'n/a';
 		$i = intval(floor(log($bytes) / log(1024)));
 		if ($i == 0) return $bytes . ' ' . $sizes[$i]; 
-		return round(($bytes / pow(1024, $i)),1,PHP_ROUND_HALF_UP). ' ' . $sizes[$i];
+		return round(($bytes / pow(1024, $i)),1). ' ' . $sizes[$i];
 	} 
 	
 	function return_bytes($val) {
