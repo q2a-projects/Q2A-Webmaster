@@ -150,7 +150,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 				<span class="wm-info-header">
 					<strong>' . $key . ' '. $value['link'] . '</strong>
 					<span class="wm-info-count">' . $value['status'] . '</span>
-					<span class="wm-info-detail">' . $value['detail'] . '</span>
+					<span class="wm-info-detail">' . @$value['detail'] . '</span>
 				</span>
 			</div>
 			<hr>
