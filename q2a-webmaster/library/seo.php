@@ -90,7 +90,6 @@ function getSEM($url){
 	$query = 'http://us.backend.semrush.com/?action=report&type=domain_rank&domain='.$url;
 	$data=getPageData($query);
 	$data=json_decode($data,true);
-	var_dump($data);
 	if(isset($data['rank']['data'][0]))
 		return array('rank'=>$data['rank']['data'][0]['Rk'],'keywords'=>$data['rank']['data'][0]['Or'],'traffic'=>$data['rank']['data'][0]['Ot'],'cost'=>$data['rank']['data'][0]['Oc']);
 	else
