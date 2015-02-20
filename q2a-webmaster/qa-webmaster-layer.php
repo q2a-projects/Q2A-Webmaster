@@ -1,25 +1,25 @@
 <?php
 class qa_html_theme_layer extends qa_html_theme_base {
-	var $plugin_directory;
-	var $plugin_url;
+	var $webmaster_plugin_directory;
+	var $webmaster_plugin_url;
 	function qa_html_theme_layer($template, $content, $rooturl, $request)
 	{
 		global $qa_layers;
-		$this->plugin_directory = $qa_layers['Webmaster Layer']['directory'];
-		$this->plugin_url = $qa_layers['Webmaster Layer']['urltoroot'];
+		$this->webmaster_plugin_directory = $qa_layers['Webmaster Layer']['directory'];
+		$this->webmaster_plugin_url = $qa_layers['Webmaster Layer']['urltoroot'];
 		qa_html_theme_base::qa_html_theme_base($template, $content, $rooturl, $request);
 	}
 	function head_css() {
 		global $qa_request;
 		if ( ($qa_request == 'webmaster') && (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN) )
-			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'. qa_opt('site_url') . $this->plugin_url.'include/style.css'.'"/>');
+			$this->output('<LINK REL="stylesheet" TYPE="text/css" HREF="'. qa_opt('site_url') . $this->webmaster_plugin_url.'include/style.css'.'"/>');
 		qa_html_theme_base::head_css();
 	}	
 	function head_script(){
 		qa_html_theme_base::head_script();
 		global $qa_request;
 		if ( ($qa_request == 'webmaster') && (qa_get_logged_in_level()>=QA_USER_LEVEL_ADMIN) )
-				$this->output('<script type="text/javascript" src="'. qa_opt('site_url') . $this->plugin_url .'include/easyResponsiveTabs.js"></script>');  
+				$this->output('<script type="text/javascript" src="'. qa_opt('site_url') . $this->webmaster_plugin_url .'include/easyResponsiveTabs.js"></script>');  
 	}	
 	function body_footer(){
 		global $qa_request;
@@ -133,7 +133,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 			</div>
 			<hr>
 			<div class="wm-info-section-full" style="text-align:center;">
-				<span><a href="http://QA-Themes.com/" title="Question2Answer Themes"><img src="' . qa_opt('site_url') . $this->plugin_url .'include/q2a-theme-logo.png"></a></span>
+				<span><a href="http://QA-Themes.com/" title="Question2Answer Themes"><img src="' . qa_opt('site_url') . $this->webmaster_plugin_url .'include/q2a-theme-logo.png"></a></span>
 			</div>
 		';
 		return $content ;
@@ -143,7 +143,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	error_reporting(E_ALL);
 	ini_set('display_errors', '1'); 
 		$content='';
-		require_once $this->plugin_directory.'library/security.php';
+		require_once $this->webmaster_plugin_directory.'library/security.php';
 		foreach ($security as $key => $value) {
 		$content.='
 			<div class="wm-info-section-full">
@@ -252,7 +252,7 @@ class qa_html_theme_layer extends qa_html_theme_base {
 	}
 	function getSEO(){
 		set_time_limit(120); // give it 2 minutes to get all rankings
-		require_once $this->plugin_directory.'library/seo.php';
+		require_once $this->webmaster_plugin_directory.'library/seo.php';
 		$homepage = qa_opt('site_url');
 		
 		if (qa_clicked('updateseo')) {
