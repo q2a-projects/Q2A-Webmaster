@@ -81,6 +81,7 @@ h2.resp-tab-title:last-child {
     margin: 0;
     cursor: pointer;
     float: none;
+	width: 100%;
 }
 
 .resp-vtabs .resp-tabs-container {
@@ -189,6 +190,11 @@ h2.resp-accordion:first-child {
     .resp-vtabs .resp-tab-content:last-child {
         border-bottom: 1px solid #c1c1c1 !important;
     }
+	.wm-half {
+		margin: 0 !important;
+		width: 100% !important;
+	}
+	
 }
 
 
