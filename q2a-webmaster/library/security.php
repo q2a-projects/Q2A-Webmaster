@@ -25,6 +25,7 @@ if ($security['allow_url_fopen']['value']) {
 		<code>include</code>, <code>require</code>, and <code>file_get_contents()</code>, to retrieve data from remote 
 		locations (Example: FTP, web site).  According to PHP Security Consortium, a large number of code injection 
 		vulnerabilities are caused by the combination of enabling allow_url_fopen, and bad input filtering.
+		<p class="wm-warning">It\'s reported that <strong>Google Captcha</strong> plugin requires this option to be ON in order to work. so before disabling this option make sure that you are not using this product of other scripts that use <code>include</code>, <code>require</code>, and <code>file_get_contents()</code> interacting with external resources.</p> 
 	';
 }else{
 	$security['allow_url_fopen']['status']=$safe;

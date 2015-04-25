@@ -382,6 +382,13 @@ hr {
     margin: 5px 0 0;
 }
 
+.wm-warning {
+    background: none repeat scroll 0 0 #fdd;
+    border-radius: 3px;
+    margin: 6px 0 0;
+    padding: 5px;
+}
+
 .qa-form-tall-button-updateseo {
     float: right;
     margin: 0 0 15px;
